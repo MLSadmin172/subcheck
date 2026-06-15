@@ -98,3 +98,25 @@ Webhook endpoint:
 Базовый запуск в продакшене:
 
 - `gunicorn -w 2 -b 0.0.0.0:$PORT app:app`
+
+## Публикация в Timeweb Cloud (рекомендовано для РФ)
+
+Подходит, если есть сложности с оплатой Render.
+
+1. В Timeweb Cloud открой `App Platform` -> `Добавить` -> `Backend` -> `Flask`.
+2. Подключи репозиторий: `https://github.com/MLSadmin172/subcheck`.
+3. Выбери ветку `main`.
+4. Укажи команды:
+   - Сборка: `pip3 install --upgrade -r requirements.txt`
+   - Запуск: `gunicorn main:app --timeout 60 --bind 0.0.0.0:80`
+5. В переменные окружения добавь:
+   - `APP_SECRET_KEY`
+   - `BASE_URL` (публичный URL приложения в Timeweb)
+   - `STRIPE_SECRET_KEY`
+   - `STRIPE_PRICE_ID`
+   - `STRIPE_WEBHOOK_SECRET`
+6. Запусти деплой.
+
+Webhook Stripe после деплоя:
+
+- `POST https://<твой-домен>/payments/stripe/webhook`
