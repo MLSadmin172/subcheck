@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>Проверка подписок</h1>
+  <p>Выбери способ проверки и оплати разовый анализ ({{ one_time_price }} RUB).</p>
+  <div class="form">
+    <a class="button-link" href="{{ url_for('check_input', method='mailru') }}">Проверить через Mail.ru</a>
+    <a class="button-link" href="{{ url_for('check_input', method='gmail') }}">Проверить через Gmail</a>
+    <a class="button-link" href="{{ url_for('check_input', method='card') }}">Проверить по карте</a>
+  </div>
+</section>
+{% endblock %}

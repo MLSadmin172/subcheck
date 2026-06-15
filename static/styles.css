@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(130deg, #120a2b 0%, #1f1147 38%, #2b145f 68%, #3a1f73 100%);
+  color: #1b1e26;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-orb {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0.35;
+}
+
+.bg-orb-a {
+  width: 320px;
+  height: 320px;
+  background: #8f5dff;
+  top: -80px;
+  left: -80px;
+  animation: driftA 16s ease-in-out infinite;
+}
+
+.bg-orb-b {
+  width: 420px;
+  height: 420px;
+  background: #bf6dff;
+  right: -140px;
+  top: 20%;
+  animation: driftB 20s ease-in-out infinite;
+}
+
+.bg-orb-c {
+  width: 280px;
+  height: 280px;
+  background: #6f55ff;
+  left: 25%;
+  bottom: -100px;
+  animation: driftC 22s ease-in-out infinite;
+}
+
+@keyframes driftA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(25px, 20px); }
+}
+
+@keyframes driftB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 15px); }
+}
+
+@keyframes driftC {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -25px); }
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.brand {
+  text-decoration: none;
+  color: #f2eaff;
+  font-weight: 700;
+  font-size: 20px;
+  text-shadow: 0 2px 8px rgba(171, 120, 255, 0.55);
+}
+
+.mascot-wrap {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascot {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffe8ff 0%, #d8b3ff 42%, #8a58ff 100%);
+  box-shadow: 0 8px 24px rgba(120, 78, 215, 0.6);
+  position: relative;
+  animation: mascotFloat 2.8s ease-in-out infinite;
+}
+
+.mascot-eye {
+  position: absolute;
+  width: 7px;
+  height: 10px;
+  background: #2a114c;
+  border-radius: 99px;
+  top: 20px;
+  animation: mascotBlink 4.2s infinite;
+}
+
+.eye-left { left: 17px; }
+.eye-right { right: 17px; }
+
+.mascot-mouth {
+  position: absolute;
+  width: 16px;
+  height: 8px;
+  border: 2px solid #2a114c;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes mascotFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes mascotBlink {
+  0%, 45%, 100% { transform: scaleY(1); }
+  46%, 50% { transform: scaleY(0.2); }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 14px 34px rgba(19, 7, 48, 0.45);
+  border: 1px solid rgba(199, 153, 255, 0.22);
+  margin-bottom: 14px;
+  color: #f7f1ff;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+input,
+textarea,
+select,
+button {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(193, 150, 255, 0.45);
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f7f1ff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+button {
+  background: linear-gradient(135deg, #7b46ff 0%, #a245ff 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #6d39ec 0%, #9237e8 100%);
+}
+
+.button-link {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background: linear-gradient(135deg, #7b46ff 0%, #a245ff 100%);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  box-shadow: 0 10px 18px rgba(124, 76, 255, 0.38);
+}
+
+.muted {
+  color: #d3c2ff;
+}
+
+.alerts {
+  margin-bottom: 10px;
+}
+
+.alert {
+  background: rgba(255, 222, 173, 0.16);
+  border: 1px solid rgba(255, 219, 161, 0.5);
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff3da;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(196, 160, 255, 0.25);
+}

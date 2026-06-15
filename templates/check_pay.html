@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>Оплата проверки</h1>
+  <p>Способ: <strong>{{ "Mail.ru" if method == "mailru" else "Gmail" if method == "gmail" else "Карта" }}</strong></p>
+  <p>Email: <strong>{{ contact_email }}</strong></p>
+  <p>Стоимость: <strong>{{ one_time_price }} RUB</strong></p>
+  {% if paid %}
+    <p>Оплата уже подтверждена.</p>
+  {% else %}
+    <p class="muted">После нажатия откроется защищенная страница оплаты.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('check_confirm_payment', check_token=check_token) }}">
+    <button type="submit">{% if paid %}Открыть результат{% else %}Перейти к оплате{% endif %}</button>
+  </form>
+</section>
+{% endblock %}

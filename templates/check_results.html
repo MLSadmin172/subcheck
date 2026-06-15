@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>Результат проверки</h1>
+  <p class="muted">Способ: <strong>{{ "Mail.ru" if method == "mailru" else "Gmail" if method == "gmail" else "Карта" }}</strong></p>
+  <p>Ежемесячно: <strong>{{ "%.2f"|format(monthly_total) }}</strong> RUB</p>
+  <p>Ежегодно: <strong>{{ "%.2f"|format(yearly_total) }}</strong> RUB</p>
+</section>
+
+<section class="card">
+  <h2>Таблица подписок</h2>
+  {% if subs %}
+    <table>
+      <thead>
+        <tr>
+          <th>Сервис</th>
+          <th>Категория</th>
+          <th>Цена</th>
+          <th>Период</th>
+          <th>Карта</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for s in subs %}
+        <tr>
+          <td>{{ s["name"] }}</td>
+          <td>{{ s["category"] }}</td>
+          <td>{{ "%.2f"|format(s["price"]) }} {{ s["currency"] }}</td>
+          <td>{{ "месяц" if s["billing_period"] == "monthly" else "год" }}</td>
+          <td>{% if s["card_last4"] %}*{{ s["card_last4"] }}{% else %}-{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Подписки не найдены.</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <a class="button-link" href="{{ url_for('check_method') }}">Проверить еще раз (новая оплата)</a>
+</section>
+{% endblock %}

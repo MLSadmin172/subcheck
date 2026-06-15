@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: subcheck
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 2 -b 0.0.0.0:$PORT app:app
+    healthCheckPath: /check
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: APP_SECRET_KEY
+        generateValue: true
+      - key: BASE_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PRICE_ID
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false

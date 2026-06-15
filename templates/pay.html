@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>Оплата доступа</h1>
+  <p>Аккаунт: <strong>{{ email }}</strong></p>
+  <p>Сумма к оплате: <strong>{{ one_time_price }} RUB</strong></p>
+  {% if paid %}
+    <p>Оплата уже подтверждена. Можно перейти в кабинет.</p>
+  {% else %}
+    <p class="muted">MVP-режим: кнопка имитирует успешную оплату.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('confirm_payment', payment_token=payment_token) }}">
+    <button type="submit">{% if paid %}Открыть кабинет{% else %}Оплатить{% endif %}</button>
+  </form>
+</section>
+{% endblock %}

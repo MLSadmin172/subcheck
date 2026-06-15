@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>Проверь свои подписки за одну оплату</h1>
+  <p>
+    Заплати один раз {{ one_time_price }} RUB и получи доступ к списку активных подписок,
+    их типам и регулярным расходам.
+  </p>
+  <form method="post" action="{{ url_for('start_payment') }}" class="form">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="you@example.com" required />
+    <button type="submit">Перейти к оплате</button>
+  </form>
+</section>
+{% endblock %}
